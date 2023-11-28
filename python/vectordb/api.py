@@ -23,7 +23,8 @@ app.add_middleware(
 
 load_dotenv()
 COLLECTION_NAME = os.getenv("COLLECTION_NAME")
-PERSIST_DIRECTORY = os.getenv("PERSIST_DIR")
+PERSIST_DIRECTORY = os.getenv("PERSIST_DIRECTORY")
+
 chroma_client = chromadb.Client(Settings(
     persist_directory=PERSIST_DIRECTORY, chroma_db_impl="duckdb+parquet",))
 collection = chroma_client.get_collection(
@@ -50,6 +51,5 @@ class QueryOutput(BaseModel):
 
 @app.api_route('/query', methods=['POST', 'HEAD', 'OPTIONS'])
 async def get_response(query: QueryInput) -> list[QueryOutput]:
-    print(query.querystring)
     query_result = find_formatted(collection, query.querystring)
     return query_result

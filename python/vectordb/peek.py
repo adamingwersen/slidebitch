@@ -9,7 +9,7 @@ from openai_embedding_function import get_openai_ef
 load_dotenv()
 
 COLLECTION_NAME = os.getenv("COLLECTION_NAME")
-PERSIST_DIRECTORY = os.getenv("PERSIST_DIR")
+PERSIST_DIRECTORY = os.getenv("PERSIST_DIRECTORY")
 
 
 def pretty_query_results(results) -> dict:
@@ -45,8 +45,8 @@ def find_formatted(collection: chromadb.Client,
 if __name__ == "__main__":
     load_dotenv()
     openai_ef = get_openai_ef(os.getenv("OPENAI_API_KEY"))
-    chroma_client = chromadb.Client(Settings(
-        persist_directory=PERSIST_DIRECTORY, chroma_db_impl="duckdb+parquet",))
+    chroma_client = chromadb.Client(
+        Settings(persist_directory=PERSIST_DIRECTORY, chroma_db_impl="duckdb+parquet"))
     collection = chroma_client.get_collection(
         name=COLLECTION_NAME)
 

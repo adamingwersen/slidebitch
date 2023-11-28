@@ -1,5 +1,18 @@
 # Slidebitch
 
+### TODOs:
+
+- [x] Build out vectordb
+- [x] Expand searchable text
+- [x] Build simple API
+- [x] Similarity on article-level
+- [x] Demo in web-app
+- [ ] Text summarisation
+- [ ] Extract relevant sub-elements / key points
+- [ ] Better data storage
+- [ ] Similarity on sub-elements
+- [ ] Choose mode in web-app
+
 ## Running code locally:
 
 ### 1. Fetch data
